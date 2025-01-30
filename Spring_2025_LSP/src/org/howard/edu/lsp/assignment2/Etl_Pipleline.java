@@ -112,32 +112,30 @@ public class Etl_Pipleline {
 	
 	
 	public static void processFile() {
-		
-		// Used the following code as a boiler plate to read files from from https://www.w3schools.com/java/java_files_read.asp
-		try {
-			File myObj = new File("data/products.csv");
-			Scanner myReader = new Scanner(myObj);
-			
-			
-			//skipping the titles
-			if (myReader.hasNextLine()) {
+        try {
+            File myObj = new File("data/products.csv");
+            Scanner myReader = new Scanner(myObj);
+
+            // Skipping the titles
+            if (myReader.hasNextLine()) {
                 myReader.nextLine();
-            } 
-			
-			
-			while (myReader.hasNextLine()) {
-				String line = myReader.nextLine();
-				String[] data = line.split(",");
-				productData.add(data);
-				
-			} myReader.close();
-			
-		} catch(FileNotFoundException e) {
-			System.out.println("an error occurred.");
-			e.printStackTrace();
-		}
-		
-	}
+            }
+
+            while (myReader.hasNextLine()) {
+                String line = myReader.nextLine().trim();
+                if (line.isEmpty()) {
+                    continue;
+                }
+
+                String[] data = line.split(",");
+                productData.add(data);
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
 	
 	
 	
