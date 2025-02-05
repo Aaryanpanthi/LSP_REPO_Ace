@@ -50,15 +50,15 @@ public class Etl_Pipleline {
 			
 		
 			//Name Standardization
-			product[1]= toTitleCase(product[1]);
-			System.out.println("11111");
-			System.out.println(product[1]);
+			//product[1]= toTitleCase(product[1]);
+//			System.out.println("11111");
+//			System.out.println(product[1]);
 			
 			
 			
 			//Price Ranges 
 			String priceRange =  calculatePriceRange(price);
-			System.out.println(priceRange);
+			//System.out.println(priceRange);
 			String[] newProduct = new String[product.length +1];
 			System.arraycopy(product,0,newProduct,0, product.length);
 			newProduct[product.length] = priceRange;
