@@ -88,28 +88,25 @@ public class Etl_Pipleline {
 	
 	
 	// Inspiration for using String Builder https://www.geeksforgeeks.org/stringbuilder-class-in-java-with-examples/
-	private static String toTitleCase(String input) {
-		if (input == null || input.isEmpty()) return input;
-		
-		String[] words = input.split(" ");
-		StringBuilder capitalized = new StringBuilder();
-		
-		for (String word : words) {
-			capitalized.append(word.substring(0,1).toUpperCase());
-			capitalized.append(word.substring(1).toLowerCase());
-			capitalized.append(" ");
-		}
-		
-		return capitalized.toString().trim();
-		
-	}
+//	private static String toTitleCase(String input) {
+//		if (input == null || input.isEmpty()) return input;
+//		
+//		String[] words = input.split(" ");
+//		StringBuilder capitalized = new StringBuilder();
+//		
+//		for (String word : words) {
+//			capitalized.append(word.substring(0,1).toUpperCase());
+//			capitalized.append(word.substring(1).toLowerCase());
+//			capitalized.append(" ");
+//		}
+//		
+//		return capitalized.toString().trim();
+//		
+//	}
+//	
 	
 	
-	
-	
-	
-	
-	
+
 	
 	public static void processFile() {
         try {
