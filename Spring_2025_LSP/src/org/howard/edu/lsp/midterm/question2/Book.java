@@ -56,7 +56,8 @@ public class Book {
         if (this == obj) {
         	return true; // Checking if the same instance
         }
-        System.out.println(obj);
+      
+  
         if (obj == null || getClass() != obj.getClass()) {
         	return false; // Checking if null or not the same class
         }
