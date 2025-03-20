@@ -18,7 +18,7 @@ public class VotingMachineTest {
         vm.castVote("Bob");
         vm.castVote("Charlie");
         vm.castVote("Charlie");
-        //vm.castVote("Charlie");
+        vm.castVote("Charlie");
         
         // Attempt to vote for a non-existent candidate
         boolean success = vm.castVote("Eve");
