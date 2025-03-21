@@ -1,56 +1,64 @@
-//The voting machine should support any number of candidates.
-//2.	Each vote is recorded for a candidate by their name.
-//3.	The system should prevent votes for non-existent candidates. 
-//4.	The system should be able to display the total votes per candidate and determine the winner.
-//
-
-
+/**
+ * The VotingMachine class simulates a voting system that supports any number of candidates.
+ * It allows adding candidates, casting votes, displaying election results, and determining the winner.
+ */
 package org.howard.edu.lsp.midterm.question3;
 
-import java.io.*;
 import java.util.*;
 
 public class VotingMachine {
-	
-	private Map<String, Integer> candidates;
-	
-	public VotingMachine() {
+
+    private Map<String, Integer> candidates;
+
+    /**
+     * Constructs a new VotingMachine with an empty list of candidates.
+     */
+    public VotingMachine() {
         candidates = new HashMap<>();
     }
-				
-	
-	//adding and checking candidates
-	
-	 public void addCandidate(String candidateName) {
-	        if (!candidates.containsKey(candidateName)) {
-	            candidates.put(candidateName, 0);
-	            
-	        } else {
-	            System.out.println("Candidate " + candidateName + " already exists.");
-	        }
-	
-	 }
-	  
-	 public boolean castVote(String name) {
-	        if (!candidates.containsKey(name)) {
-	            return false;
-	        }
-	        
-	        candidates.put(name, candidates.get(name) + 1);
-	        System.out.println(candidates);
-	        return true;
-	    }
-	
-    
-    
+
+    /**
+     * Adds a candidate to the voting system if they do not already exist.
+     *
+     * @param candidateName The name of the candidate to add.
+     */
+    public void addCandidate(String candidateName) {
+        if (!candidates.containsKey(candidateName)) {
+            candidates.put(candidateName, 0);
+        } else {
+            System.out.println("Candidate " + candidateName + " already exists.");
+        }
+    }
+
+    /**
+     * Casts a vote for a candidate if they exist in the system.
+     *
+     * @param name The name of the candidate to vote for.
+     * @return true if the vote was successfully cast, false if the candidate does not exist.
+     */
+    public boolean castVote(String name) {
+        if (!candidates.containsKey(name)) {
+            return false;
+        }
+        candidates.put(name, candidates.get(name) + 1);
+        return true;
+    }
+
+    /**
+     * Displays the results of the election, showing the number of votes each candidate received.
+     */
     public void displayResults() {
         System.out.println("Election Results:");
         for (Map.Entry<String, Integer> entry : candidates.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue() + " votes");
         }
     }
-    
-    
+
+    /**
+     * Determines the winner of the election based on the candidate with the most votes.
+     *
+     * @return A string indicating the winner and their vote count, or a message if no votes were cast.
+     */
     public String getWinner() {
         String winner = null;
         int maxVotes = -1;
@@ -65,9 +73,6 @@ public class VotingMachine {
         if (winner == null) {
             return "No winner (no votes cast).";
         }
-        return "Winner: " + winner + " with " + maxVotes + " votes.";
+        return winner + " with " + maxVotes + " votes.";
     }
-    
-	
-
 }
