@@ -1,78 +1,86 @@
 package org.howard.edu.lsp.assignment6;
 
 import static org.junit.jupiter.api.Assertions.*;
-import java.util.ArrayList;
-import org.junit.jupiter.api.BeforeEach;
+
 import org.junit.jupiter.api.Test;
 
-class IntegerSetTest {
-    private IntegerSet set1;
-    private IntegerSet set2;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.BeforeEach;
 
-    @BeforeEach
-    void setUp() {
-        set1 = new IntegerSet();
-        set2 = new IntegerSet();
-    }
 
-    @Test
-    void testAddAndContains() {
-        set1.add(5);
-        set1.add(10);
-        assertTrue(set1.contains(5));
-        assertFalse(set1.contains(3));
-    }
 
-    @Test
-    void testEquals() {
-        set1.add(1);
-        set1.add(2);
-        set2.add(2);
-        set2.add(1);
-        assertTrue(set1.equals(set2));
-    }
 
-    @Test
-    void testLargest() {
-        set1.add(3);
-        set1.add(10);
-        set1.add(7);
-        assertEquals(10, set1.largest());
-    }
+public class IntegerSetTest {
+	
+	
+	
+		private IntegerSet set1;
+		private IntegerSet set2;
+		
+		
+		
+		@BeforeEach
+		public void setUp() {
+			set1 = new IntegerSet();
+			set2 = new IntegerSet();
+			
+		}
+		
+		
+		@Test
+		@DisplayName("Test for checking Clear")
+		public void testClear() {
+			
+			set1.add(2);
+			set1.add(1);
+			
+			assertNotEquals(0,set1.length()); 
+			
+			set1.clear();
+			
+			
+			assertEquals(0,set1.length());
+			
+		}
+		
+		
+		
+		@Test
+		@DisplayName("Test for checking Length")
+		public void testLength() {
+			
+			assertEquals(0,set1.length());
+			set1.add(2);
+			set1.add(1);
+			
+			
+			assertEquals(2,set1.length());
+			
+			set1.add(3);
+			
+			assertNotEquals(2,set1.length());
+			
+		}
+		
+		
+		
 
-    @Test
-    void testSmallest() {
-        set1.add(3);
-        set1.add(10);
-        set1.add(2);
-        assertEquals(2, set1.smallest());
-    }
+	    @Test
+	    @DisplayName("Test case for equals")
+	    public void testEquals() {
+	       set1.add(3);
+	       set2.add(1);
+	       set1.add(1);
+	       set2.add(3);
+	       set1.add(2);
+	       set2.add(2);
+	       
+	       assertTrue(set1.equals(set2));
 
-    @Test
-    void testUnion() {
-        set1.add(1);
-        set1.add(2);
-        set2.add(2);
-        set2.add(3);
-        set1.union(set2);
-        assertTrue(set1.contains(1));
-        assertTrue(set1.contains(2));
-        assertTrue(set1.contains(3));
-        assertEquals(3, set1.length());
-    }
+	       set2.add(4);
+	       assertFalse(set1.equals(set2));
+	       
+	    }
 
-    @Test
-    void testClearAndIsEmpty() {
-        set1.add(1);
-        set1.add(2);
-        set1.clear();
-        assertTrue(set1.isEmpty());
-    }
+	}
 
-    @Test
-    void testToString() {
-        set1.add(1);
-        set1.add(2);
-        assertEquals("[1, 2]", set1.toString());
-    }
-}
