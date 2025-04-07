@@ -64,6 +64,30 @@ public class IntegerSetTest {
 		
 		
 		
+		@Test 
+		@DisplayName("Test for checking Largest")
+		public void testLargest() {
+			
+			Exception exception = assertThrows(RuntimeException.class, () -> set1.largest());
+			assertEquals("Set is empty", exception.getMessage());
+
+			
+
+			
+			set1.add(2);
+			set1.add(-2);
+			set1.add(1);
+			set1.add(3);
+			set1.add(0);
+			
+			
+			assertEquals(3,set1.largest());
+			assertNotEquals(2,set1.largest());
+			
+			
+		}
+		
+		
 
 	    @Test
 	    @DisplayName("Test case for equals")
