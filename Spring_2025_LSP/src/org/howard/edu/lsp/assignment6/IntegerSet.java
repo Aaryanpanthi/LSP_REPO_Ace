@@ -123,16 +123,14 @@ public class IntegerSet  {
      * @throws RuntimeException if the set is empty
      */
     // Returns the largest item in the set. 5 pts.
-    public int largest() {
-    	 if (set.isEmpty()) {
-             throw new RuntimeException("Set is empty");
-         }
-    	
-        // If the set can be empty, consider throwing an exception or handling that case.
+    public int largest() throws IntegerSetException {
+        if (set.isEmpty()) {
+            throw new IntegerSetException("Set is empty");
+        }
         int maximum = Integer.MIN_VALUE;
-        for (int i = 0; i < set.size(); i++) {
-            if (set.get(i) > maximum) {
-                maximum = set.get(i);
+        for (int num : set) {
+            if (num > maximum) {
+                maximum = num;
             }
         }
         return maximum;
@@ -147,23 +145,18 @@ public class IntegerSet  {
      */
     
     // Returns the smallest item in the set. 5 pts.
-    public int smallest() {
-    	
-    	 if (set.isEmpty()) {
-             throw new RuntimeException("Set is empty");
-         }
-    	
-        // If the set can be empty, consider throwing an exception or handling that case.
+    public int smallest() throws IntegerSetException {
+        if (set.isEmpty()) {
+            throw new IntegerSetException("Set is empty");
+        }
         int minimum = Integer.MAX_VALUE;
-        for (int i = 0; i < set.size(); i++) {
-            if (set.get(i) < minimum) {
-                minimum = set.get(i);
+        for (int num : set) {
+            if (num < minimum) {
+                minimum = num;
             }
         }
         return minimum;
     }
-    
-    
     
     /**
      * Checks if the set already contains the given item or not. If it doesn't contain , it adds to the set. 

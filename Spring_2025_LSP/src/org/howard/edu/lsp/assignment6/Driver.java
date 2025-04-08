@@ -1,5 +1,5 @@
 package org.howard.edu.lsp.assignment6;
-
+import org.howard.edu.lsp.assignment6.IntegerSetException;
 import java.util.ArrayList;
 
 public class Driver {
@@ -35,27 +35,34 @@ public class Driver {
         System.out.println("Set1 after clear: " + set1);
         System.out.println("Set1 is empty after clear? " + set1.isEmpty());
 
-        // Test 7: Smallest and Largest with values
+     // Test 7: Smallest and Largest with values
         set1.add(5);
         set1.add(15);
         set1.add(25);
         System.out.println("Set1: " + set1);
-        System.out.println("Smallest in Set1: " + set1.smallest());
-        System.out.println("Largest in Set1: " + set1.largest());
+        
+        try {
+            System.out.println("Smallest in Set1: " + set1.smallest());
+            System.out.println("Largest in Set1: " + set1.largest());
+        } catch (IntegerSetException e) {
+            System.out.println("Exception in Test 7: " + e.getMessage());
+        }
 
-        // Test 8: Exception handling for smallest/largest
+
+     //// Test 8: Exception handling for smallest/largest
         set1.clear();
         try {
             set1.smallest();
-        } catch (RuntimeException e) {
+        } catch (IntegerSetException e) {
             System.out.println("Caught exception for smallest on empty set: " + e.getMessage());
         }
 
         try {
             set1.largest();
-        } catch (RuntimeException e) {
+        } catch (IntegerSetException e) {
             System.out.println("Caught exception for largest on empty set: " + e.getMessage());
         }
+
 
         // Test 9: equals
         IntegerSet setA = new IntegerSet();
