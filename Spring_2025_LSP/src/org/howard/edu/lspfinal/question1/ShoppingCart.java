@@ -61,6 +61,19 @@ public class ShoppingCart {
                 throw new IllegalArgumentException("Invalid discount code.");
         }
     }
+    
+    
+    
+    /**
+     * Removes an item from the shopping cart.
+     * 
+     * @param itemName the name of the item to remove
+     * @return true if the item was removed successfully, false if the item did not exist
+     */
+    public boolean removeItem(String itemName) {
+        return items.remove(itemName) != null;
+    }
+
 
     /**
      * Returns the current discount percentage applied to the cart.

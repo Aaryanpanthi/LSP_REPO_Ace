@@ -104,6 +104,21 @@ class ShoppingCartTest {
         assertEquals(35.0, cart.getTotalCost(), 0.001);
     }
     
+    
+    @Test
+    public void testRemoveExistingItem() {
+        ShoppingCart cart = new ShoppingCart();
+        cart.addItem("Book", 15.0);
+        assertTrue(cart.removeItem("Book"));
+    }
+
+    @Test
+    public void testRemoveNonExistentItem() {
+        ShoppingCart cart = new ShoppingCart();
+        cart.addItem("Pen", 1.5);
+        assertFalse(cart.removeItem("Notebook"));
+    }
+    
     //with discount
     @Test
     void testTotalCostWithDiscount() {
