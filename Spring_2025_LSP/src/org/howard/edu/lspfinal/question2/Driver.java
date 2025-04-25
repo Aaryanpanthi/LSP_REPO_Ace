@@ -1,6 +1,6 @@
 
 
-//https://stackoverflow.com/questions/7508498/how-to-create-a-subclass-in-eclipse
+
 
 
 package org.howard.edu.lspfinal.question2;

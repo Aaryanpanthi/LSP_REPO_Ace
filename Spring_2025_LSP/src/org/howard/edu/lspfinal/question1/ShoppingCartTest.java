@@ -1,3 +1,26 @@
+//resources used https://symflower.com/en/company/blog/2023/how-to-write-junit-test-cases/
+ // Junit assignment 6
+ // personal notes 
+ //www.baeldung.com/junit-assert-exception
+ 
+ 
+ 
+ 
+ //For reference
+ //Test for adding valid item [3 pts.]
+ //Test for adding item with 0 price (expect exception) [3 pts.]
+ //Test for adding item with negative price (expect exception) [3 pts.]
+ //Test for applying "SAVE10"[3 pts.]
+ //Test for applying "SAVE20" [3 pts.]
+ //Test for applying invalid code (expect exception) [3 pts.]
+ //Test total cost without discount [4 pts.]
+ //Test total cost with discount [5 pts.]
+ //Test total cost with empty cart [3 pts.]
+
+//extra credit //Remove existing item
+
+
+
 package org.howard.edu.lspfinal.question1;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -62,7 +85,7 @@ class ShoppingCartTest {
     @DisplayName("Test applying invalid discount code throws exception")
     void testApplyInvalidDiscountCodeThrowsException() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            cart.applyDiscountCode("INVALIDCODE");
+            cart.applyDiscountCode("SAVE50");
         });
         assertEquals("Invalid discount code.", exception.getMessage());
     }
@@ -72,7 +95,7 @@ class ShoppingCartTest {
     void testTotalCostWithoutDiscount() {
         cart.addItem("Shirt", 25.0);
         cart.addItem("Tie", 10.0);
-        assertEquals(35.0, cart.getTotalCost(), 0.001);
+        assertEquals(35.0, cart.getTotalCost());
     }
 
     @Test
@@ -97,12 +120,12 @@ class ShoppingCartTest {
         cart.addItem("Shoes", 100.0);
         cart.addItem("Socks", 20.0);
         cart.applyDiscountCode("SAVE10");
-        assertEquals(108.0, cart.getTotalCost(), 0.001); 
+        assertEquals(108.0, cart.getTotalCost()); 
     }
 
     @Test
     @DisplayName("Test total cost with empty cart returns zero")
     void testTotalCostWithEmptyCart() {
-        assertEquals(0.0, cart.getTotalCost(), 0.001);
+        assertEquals(0.0, cart.getTotalCost());
     }
 }
