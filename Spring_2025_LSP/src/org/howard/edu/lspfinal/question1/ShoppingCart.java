@@ -22,6 +22,11 @@ public class ShoppingCart {
         if (price < 0) {
             throw new IllegalArgumentException("Price cannot be negative.");
         }
+        
+        if (price == 0) {
+        	throw new IllegalArgumentException("Price cannot be zero.");
+        }
+   
         items.put(itemName, price);
     }
 
